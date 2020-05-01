@@ -107,14 +107,14 @@ export default class App extends Component {
   }
 
   editMovie = (event) => {
-    const movieId = event.target.movieid
-    const movie = this.state.movies.reduce((movieToEdit, movie) => {
+    const movieId = event.target.attributes.getNamedItem('movieid').value
+    const targetMovie = this.state.movies.reduce((movieToEdit, movie) => {
       return movie._id === movieId ? movie : movieToEdit
     }, null)
 
-    if (movie) {
+    if (targetMovie) {
       this.setState({
-        userInput: movie
+        userInput: targetMovie
       })
     }
   }
